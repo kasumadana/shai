@@ -1,0 +1,104 @@
+"use client"
+
+import Link from "next/link"
+import Image from "next/image"
+import { useState } from "react"
+import { Menu, X } from "lucide-react"
+
+export function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  return (
+    <nav className="sticky top-0 z-50 bg-warm-white shadow-sm border-b-4 border-rust-orange/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          {/* Logo & Brand */}
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <Image src="/shai-logo.png" alt="Shai Logo" width={120} height={40} priority className="h-auto" />
+          </Link>
+
+          {/* Navigation Links */}
+          <ul className="hidden md:flex gap-8 items-center">
+            <li>
+              <Link href="/" className="text-text-dark font-semibold hover:text-rust-orange transition-colors">
+                Beranda
+              </Link>
+            </li>
+            <li>
+              <Link href="/chat" className="text-text-dark font-semibold hover:text-rust-orange transition-colors">
+                Tanya Shai
+              </Link>
+            </li>
+            <li>
+              <Link href="/detector" className="text-text-dark font-semibold hover:text-rust-orange transition-colors">
+                Cek Pesan
+              </Link>
+            </li>
+            <li>
+              <Link href="/adventure" className="text-text-dark font-semibold hover:text-rust-orange transition-colors">
+                Petualangan
+              </Link>
+            </li>
+          </ul>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-full bg-rust-orange/10 hover:bg-rust-orange/20 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X className="w-6 h-6 text-text-dark" /> : <Menu className="w-6 h-6 text-text-dark" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <div className="md:hidden pb-4 border-t border-rust-orange/10">
+            <ul className="flex flex-col gap-3 pt-4">
+              <li>
+                <Link
+                  href="/"
+                  className="block text-text-dark font-semibold hover:text-rust-orange transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Beranda
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/chat"
+                  className="block text-text-dark font-semibold hover:text-rust-orange transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Tanya Shai
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/detector"
+                  className="block text-text-dark font-semibold hover:text-rust-orange transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Cek Pesan
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/adventure"
+                  className="block text-text-dark font-semibold hover:text-rust-orange transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Petualangan
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
+    </nav>
+  )
+}
+
+export default Navbar
