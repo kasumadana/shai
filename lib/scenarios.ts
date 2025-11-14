@@ -294,7 +294,7 @@ export const allScenarios: Scenario[] = [
       {
         id: 'p14-2',
         teksPilihan: 'AI ini punya "bias". Ini tidak adil!',
-        teksFeedback: 'Kamu benar! Ini adalah masalah besar dalam AI. Penting bagi kita untuk menyadari bahwa AI bisa memiliki bias.',
+        teksFeedback: 'Kamu benar! Ini adalah masalah besar dalam AI. Penting bagi  untuk menyadari bahwa AI bisa memiliki bias.',
         isCorrect: true,
       },
       {
@@ -332,7 +332,6 @@ export const allScenarios: Scenario[] = [
 ];
 
 
-// 3. Fungsi Ajaib: Mengacak dan Mengambil Skenario
 /**
  * Mengambil beberapa skenario secara acak dari daftar master.
  * @param count Berapa banyak skenario acak yang diinginkan.

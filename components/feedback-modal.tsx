@@ -1,48 +1,68 @@
 "use client"
 
-import { Heart, X } from "lucide-react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 interface FeedbackModalProps {
   isOpen: boolean
-  feedback: { title: string; message: string } | null
   onClose: () => void
+  feedback: { 
+    title: string; 
+    message: string;
+    isCorrect: boolean; // <-- Pastikan ini ada
+  } | null
 }
 
-export function FeedbackModal({ isOpen, feedback, onClose }: FeedbackModalProps) {
-  if (!isOpen || !feedback) return null
+export function FeedbackModal({ isOpen, onClose, feedback }: FeedbackModalProps) {
+  // Jika tidak ada feedback, jangan render modal-nya
+  if (!feedback) return null 
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-warm-white rounded-3xl shadow-2xl max-w-md w-full p-8 animate-in fade-in zoom-in-95 duration-300">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-soft-cream transition-colors"
-        >
-          <X className="w-6 h-6 text-text-dark" />
-        </button>
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="bg-warm-white rounded-3xl shadow-lg border-4 border-rust-orange/20">
 
-        {/* Shai Avatar */}
-        <div className="flex justify-center mb-6">
-          <div className="w-20 h-20 bg-gradient-to-br from-rust-orange to-rust-orange-light rounded-full flex items-center justify-center shadow-lg">
-            <Heart className="w-10 h-10 text-white fill-white" />
+        <DialogHeader>
+          
+          {/* Gambar Maskot Dinamis */}
+          <div className="flex justify-center mb-4">
+            <Image
+              // Logika dinamis untuk mengganti gambar
+              src={feedback.isCorrect ? "/shai-happy.png" : "/shai-sad.png"}
+              alt={feedback.isCorrect ? "Shai Senang" : "Shai Sedih"}
+              width={100}
+              height={100}
+            />
           </div>
-        </div>
 
-        {/* Feedback Title */}
-        <h3 className="text-center text-lg font-bold text-rust-orange mb-4">Pilihan: {feedback.title}</h3>
+          {/* Judul (Pilihan Pengguna) */}
+          <DialogTitle className="text-center text-xl font-bold text-text-dark">
+            {feedback.title}
+          </DialogTitle>
+          
+          {/* Deskripsi (Feedback Teks) */}
+          <DialogDescription className="text-center text-base text-text-dark font-nunito pt-2">
+            {feedback.message}
+          </DialogDescription>
 
-        {/* Feedback Message */}
-        <p className="text-center text-text-dark leading-relaxed mb-8 text-base">{feedback.message}</p>
+        </DialogHeader>
+        
+        {/* Tombol Footer */}
+        <DialogFooter className="sm:justify-center">
+          <Button 
+            onClick={onClose}
+            // (Opsional) Terapkan styling dinamis pada tombol juga
+            className={`px-6 py-3 font-bold rounded-full transition-colors ${
+              feedback.isCorrect 
+                ? 'bg-forest-green text-warm-white hover:bg-forest-green-dark' 
+                : 'bg-rust-orange text-warm-white hover:bg-rust-orange-dark'
+            }`}
+          >
+            Mengerti
+          </Button>
+        </DialogFooter>
 
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="w-full bg-forest-green text-warm-white font-bold py-3 rounded-2xl hover:bg-forest-green-dark transition-colors"
-        >
-          Lanjut
-        </button>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }

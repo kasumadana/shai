@@ -6,12 +6,12 @@ import { ScenarioCard } from "@/components/scenario-card"
 import { FeedbackModal } from "@/components/feedback-modal"
 import { Skeleton } from "@/components/ui/skeleton" // Impor Skeleton
 
-// 1. Impor Tipe Data dan Fungsi dari 'database' kita
-// Error TS2459 & TS2305 akan hilang karena kita sudah EXPORT tipenya
+// 1. Impor Tipe Data dan Fungsi dari 'database'
+// Error TS2459 & TS2305 akan hilang karena sudah EXPORT tipenya
 import type { Scenario, Choice } from "@/lib/scenarios"
 import { getRandomScenarios } from "@/lib/scenarios"
 
-// 2. Definisikan tipe data untuk feedback (kita tambahkan isCorrect)
+// 2. Definisikan tipe data untuk feedback (tambahkan isCorrect)
 interface FeedbackInfo {
   title: string;
   message: string;
@@ -31,7 +31,7 @@ export default function AdventurePage() {
   // 5. Ambil skenario acak SAAT HALAMAN DIMUAT
   useEffect(() => {
     // Ambil 3 skenario acak dari database
-    const randomScenarios = getRandomScenarios(3); // Anda bisa ubah angka ini
+    const randomScenarios = getRandomScenarios(3);
     setScenarios(randomScenarios);
     setIsLoading(false);
   }, []); // <-- Array kosong [] berarti ini hanya berjalan satu kali

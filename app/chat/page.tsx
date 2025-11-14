@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { Navbar } from "@/components/navbar"
-import Image from "next/image" // <-- PERBAIKAN 1: Impor Next.js Image
+import Image from "next/image"
 
 interface Message {
   id: string
@@ -49,7 +49,6 @@ export default function ChatPage() {
     setInput("")
     setLoading(true)
 
-    // (Logika 'Typing' Anda sudah bagus)
     const typingMessage: Message = {
       id: "typing",
       type: "ai",
@@ -103,17 +102,9 @@ export default function ChatPage() {
   }
 
   return (
-    // PERBAIKAN 2: Ubah <main> untuk menjadi 'h-screen' (tinggi layar penuh)
-    // dan 'flex-col' agar Navbar dan Chat Container tertata secara vertikal.
     <main className="flex flex-col h-screen bg-soft-cream">
       <Navbar />
 
-      {/* PERBAIKAN 3: Ini adalah perbaikan bug layout utama.
-        - Hapus 'h-[calc(100vh-80px)]'.
-        - Tambahkan 'flex-1' agar kontainer ini mengisi sisa ruang secara fleksibel.
-        - Tambahkan 'min-h-0' (hack Flexbox) untuk memastikan 'overflow-y-auto' di child berfungsi.
-        - Tambahkan 'w-full' agar 'max-w-4xl' berfungsi dengan 'mx-auto'.
-      */}
       <div className="flex flex-col flex-1 min-h-0 max-w-4xl mx-auto w-full">
         {/* Messages Container (Kode Anda sudah benar) */}
         <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
@@ -137,7 +128,6 @@ export default function ChatPage() {
                   className={`rounded-3xl px-4 py-3 font-sans text-sm md:text-base leading-relaxed ${
                     message.type === "user"
                       ? "bg-forest-green text-warm-white rounded-br-none"
-                      // (Saya tambahkan shadow dan border-transparent untuk konsistensi)
                       : "bg-warm-white text-text-dark border-2 border-rust-orange/50 rounded-bl-none shadow-sm"
                   }`}
                 >

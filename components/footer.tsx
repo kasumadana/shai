@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Card, CardContent } from '@/components/ui/card' // Kita gunakan Card dari v0!
+import { Card, CardContent } from '@/components/ui/card' //  gunakan Card dari v0!
 
 export function Footer() {
   return (
@@ -26,7 +26,7 @@ export function Footer() {
           <Card className="bg-white shadow-lg transform -rotate-2 border-none">
             <CardContent className="p-6">
               <Image
-                src="/shai-logo.png" // PASTIKAN NAMA FILE LOGO ANDA BENAR
+                src="/shai-logo.png"
                 alt="Logo Shai"
                 width={120}
                 height={40}
@@ -58,7 +58,7 @@ export function Footer() {
           {/* Kolom 3: Maskot (Visual) */}
           <div className="flex justify-center items-center">
             <Image
-              src="/shai-smile.png" // PASTIKAN NAMA FILE MASKOT ANDA BENAR
+              src="/shai-smile.png" 
               alt="Maskot Shai si Panda Merah"
               width={240}
               height={240}

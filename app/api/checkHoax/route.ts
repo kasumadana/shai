@@ -23,7 +23,6 @@ const model = genAI.getGenerativeModel({
   generationConfig: {
     responseMimeType: "application/json", // Memaksa AI selalu membalas dengan JSON
   },
-  // PERBAIKAN: Instruksi sistem juga diterjemahkan
   systemInstruction: `Anda adalah mesin analisis hoax berbahasa Indonesia. Respons Anda WAJIB berupa objek JSON yang valid dan HANYA JSON, yang cocok dengan skema ini:
   { "severity": "string", "explanation": "string" }.
   'explanation' (penjelasan) WAJIB dalam Bahasa Indonesia.
