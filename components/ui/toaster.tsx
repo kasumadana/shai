@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { useToast } from '@/hooks/use-toast'
+import { useToast } from "@/hooks/use-toast"
 import {
   Toast,
   ToastClose,
@@ -8,13 +8,15 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-} from '@/components/ui/toast'
+} from "@/components/ui/toast"
 
 export function Toaster() {
+  // Mengambil daftar toast aktif dari hook
   const { toasts } = useToast()
 
   return (
     <ToastProvider>
+      {/* Melakukan mapping setiap toast di state menjadi elemen visual */}
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
           <Toast key={id} {...props}>
@@ -29,6 +31,7 @@ export function Toaster() {
           </Toast>
         )
       })}
+      {/* Area tempat toast muncul (pojok layar) */}
       <ToastViewport />
     </ToastProvider>
   )

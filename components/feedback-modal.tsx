@@ -4,18 +4,19 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
+// Interface Props: Data yang dibutuhkan komponen ini
 interface FeedbackModalProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean         // Mengontrol apakah modal terbuka/tertutup
+  onClose: () => void     // Fungsi yang dipanggil saat modal ditutup
   feedback: { 
-    title: string; 
-    message: string;
-    isCorrect: boolean; // <-- Pastikan ini ada
+    title: string;        // Judul (biasanya teks pilihan user)
+    message: string;      // Pesan feedback/edukasi
+    isCorrect: boolean;   // Status benar/salah untuk styling
   } | null
 }
 
 export function FeedbackModal({ isOpen, onClose, feedback }: FeedbackModalProps) {
-  // Jika tidak ada feedback, jangan render modal-nya
+  // Jika tidak ada data feedback, jangan render apapun untuk mencegah error
   if (!feedback) return null 
 
   return (
@@ -24,10 +25,9 @@ export function FeedbackModal({ isOpen, onClose, feedback }: FeedbackModalProps)
 
         <DialogHeader>
           
-          {/* Gambar Maskot Dinamis */}
+          {/* Gambar Maskot Dinamis: Shai Senang jika Benar, Sedih jika Salah */}
           <div className="flex justify-center mb-4">
             <Image
-              // Logika dinamis untuk mengganti gambar
               src={feedback.isCorrect ? "/shai-happy.png" : "/shai-sad.png"}
               alt={feedback.isCorrect ? "Shai Senang" : "Shai Sedih"}
               width={100}
@@ -35,23 +35,22 @@ export function FeedbackModal({ isOpen, onClose, feedback }: FeedbackModalProps)
             />
           </div>
 
-          {/* Judul (Pilihan Pengguna) */}
+          {/* Judul Feedback */}
           <DialogTitle className="text-center text-xl font-bold text-text-dark">
             {feedback.title}
           </DialogTitle>
           
-          {/* Deskripsi (Feedback Teks) */}
+          {/* Deskripsi / Penjelasan Edukatif */}
           <DialogDescription className="text-center text-base text-text-dark font-nunito pt-2">
             {feedback.message}
           </DialogDescription>
 
         </DialogHeader>
         
-        {/* Tombol Footer */}
         <DialogFooter className="sm:justify-center">
+          {/* Tombol Tutup dengan styling dinamis sesuai status isCorrect */}
           <Button 
             onClick={onClose}
-            // (Opsional) Terapkan styling dinamis pada tombol juga
             className={`px-6 py-3 font-bold rounded-full transition-colors ${
               feedback.isCorrect 
                 ? 'bg-forest-green text-warm-white hover:bg-forest-green-dark' 

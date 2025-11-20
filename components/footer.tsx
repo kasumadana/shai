@@ -1,14 +1,14 @@
-// Isi untuk: components/footer.tsx
-
 import Image from 'next/image'
 import Link from 'next/link'
-import { Card, CardContent } from '@/components/ui/card' //  gunakan Card dari v0!
+import { Card, CardContent } from '@/components/ui/card'
 
 export function Footer() {
   return (
-    <footer className="bg-[hsl(var(--shai-cream))] text-[hsl(var(--shai-brown))]">
-      {/* 1. Pembatas Bentuk Gelombang Asimetris */}
-      <div className="bg-transparent text-[hsl(var(--shai-cream))]">
+    <footer className="bg-secondary text-secondary-foreground">
+      
+      {/* 1. Pemisah Bentuk Gelombang (SVG Wave Separator) */}
+      {/* Memberikan transisi halus antara konten halaman dan footer */}
+      <div className="bg-soft-cream text-secondary">
         <svg
           viewBox="0 0 1440 120"
           fill="currentColor"
@@ -18,12 +18,12 @@ export function Footer() {
         </svg>
       </div>
 
-      {/* 2. Konten Utama Footer */}
+      {/* 2. Konten Grid Utama */}
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
           
-          {/* Kolom 1: Deskripsi Shai (Gaya Catatan) */}
-          <Card className="bg-white shadow-lg transform -rotate-2 border-none">
+          {/* Kolom 1: Info Shai (dalam kartu miring ke kiri) */}
+          <Card className="bg-card shadow-lg transform -rotate-2 border-none">
             <CardContent className="p-6">
               <Image
                 src="/shai-logo.png"
@@ -32,45 +32,45 @@ export function Footer() {
                 height={40}
                 className="mb-4"
               />
-              <p className="text-sm font-nunito">
+              <p className="text-sm font-nunito text-card-foreground">
                 Shai adalah teman AI-mu, sebuah perisai digital yang dirancang untuk membantumu belajar tentang keamanan internet dengan cara yang aman dan menyenangkan.
               </p>
             </CardContent>
           </Card>
 
-          {/* Kolom 2: Navigasi (Gaya Catatan) */}
-          <Card className="bg-white shadow-lg transform rotate-1 border-none">
+          {/* Kolom 2: Menu Navigasi (dalam kartu miring ke kanan) */}
+          <Card className="bg-card shadow-lg transform rotate-1 border-none">
             <CardContent className="p-6">
-              <h3 className="font-bold text-lg mb-4 text-[hsl(var(--shai-rust))]">
+              <h3 className="font-bold text-lg mb-4 text-primary">
                 Jelajahi Shai
               </h3>
               <nav>
-                <ul className="space-y-3 font-nunito">
-                  <li><Link href="/" className="hover:text-[hsl(var(--shai-rust))] transition-colors">Beranda</Link></li>
-                  <li><Link href="/chat" className="hover:text-[hsl(var(--shai-rust))] transition-colors">Tanya Shai</Link></li>
-                  <li><Link href="/detector" className="hover:text-[hsl(var(--shai-rust))] transition-colors">Cek Pesan</Link></li>
-                  <li><Link href="/adventure" className="hover:text-[hsl(var(--shai-rust))] transition-colors">Petualangan</Link></li>
+                <ul className="space-y-3 font-nunito text-card-foreground">
+                  <li><Link href="/" className="hover:text-primary transition-colors">Beranda</Link></li>
+                  <li><Link href="/chat" className="hover:text-primary transition-colors">Tanya Shai</Link></li>
+                  <li><Link href="/detector" className="hover:text-primary transition-colors">Cek Pesan</Link></li>
+                  <li><Link href="/adventure" className="hover:text-primary transition-colors">Petualangan</Link></li>
                 </ul>
               </nav>
             </CardContent>
           </Card>
 
-          {/* Kolom 3: Maskot (Visual) */}
+          {/* Kolom 3: Maskot Shai (Hanya tampil di desktop) */}
           <div className="flex justify-center items-center">
             <Image
               src="/shai-smile.png" 
               alt="Maskot Shai si Panda Merah"
               width={240}
               height={240}
-              className="hidden md:block" // Hanya tampil di desktop
+              className="hidden md:block" 
             />
           </div>
         </div>
 
-        {/* 3. Area Copyright */}
-        <div className="text-center mt-16 pt-8 border-t border-[hsl(var(--shai-brown))] border-opacity-20">
-          <p className="font-bold text-lg mb-1">Menjelajah Dunia Digital dengan Aman.</p>
-          <p className="text-sm opacity-70">© 2025 Shai. Semua Hak Cipta Dilindungi.</p>
+        {/* 3. Hak Cipta */}
+        <div className="text-center mt-16 pt-8 border-t border-primary/10 text-muted-foreground">
+          <p className="font-bold text-lg mb-1 text-primary">Menjelajah Dunia Digital dengan Aman.</p>
+          <p className="text-sm">© 2025 Shai. Semua Hak Cipta Dilindungi.</p>
         </div>
       </div>
     </footer>

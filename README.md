@@ -1,152 +1,155 @@
-# 🐼 Proyek Shai
+# 🐼 Shai - Sahabat Aman Internet
 
-Shai adalah sebuah portal _website_ edukasi interaktif yang dirancang untuk mempersiapkan anak-anak Indonesia (usia 8-12 tahun) menghadapi era AI yang aman. Nama Shai adalah gabungan dari "Shield" (Perisai) dan "AI", mencerminkan misinya sebagai perisai AI yang ramah dan protektif.
+**Shai** adalah platform edukasi interaktif berbasis web yang dirancang untuk membantu anak-anak Indonesia (usia 8-12 tahun) belajar tentang keamanan digital, privasi, dan etika internet. Dipandu oleh maskot panda merah yang ramah, Shai menggabungkan teknologi _Generative AI_ dengan pendekatan _gamification_ yang aman.
 
-Proyek ini dibangun dengan tema visual **"Cozy Digital Storybook"** dan dipandu oleh maskot panda merah yang bersahabat.
+### 🏆 Konteks Proyek
 
-### Konteks Lomba
+Proyek ini dikembangkan untuk **Young Coder World Cup (YCWC) 2025**.
 
-Proyek ini dibuat untuk Lomba **Young Coder World Cup (YCWC) 2025**.
-
-- **Tema Lomba:** "Secure AI for All".pdf]
-- **Jenjang:** Senior (15-18 tahun)
-- **Topik Jenjang:** "How AI Can Help Humans to Solve Problems?".pdf]
+- **Tema:** "Secure AI for All"
+- **Kategori:** Senior (15-18 tahun)
+- **Fokus:** Solusi AI yang membantu manusia memecahkan masalah keamanan digital sejak usia dini.
 
 ---
 
-## 🚀 Fitur Utama
+## 🌟 Fitur Unggulan
 
-Shai memiliki tiga fitur inti yang ditenagai oleh AI untuk menciptakan pengalaman belajar yang aman dan interaktif:
+### 1. 🤖 Tanya Shai (AI Chatbot)
 
-### 1\. 🤖 Tanya Shai (AI Chatbot)
+Teman ngobrol virtual yang aman untuk anak-anak bertanya seputar dunia digital.
 
-Sebuah _chatbot_ aman di mana anak-anak dapat bertanya apa saja tentang keamanan digital (misal: "Apa itu _phishing_?").
+- **Teknologi:** Google Gemini 2.5 Flash Lite.
+- **Keamanan:** Menggunakan _System Prompt_ khusus dengan persona "Shai" yang ramah, tidak menggunakan format markdown rumit, dan selalu memprioritaskan jawaban yang aman untuk anak.
+- **Lokasi:** `/chat`
 
-- Ditenagai oleh Google Gemini Pro.
-- Memiliki _system prompt_ yang ketat untuk selalu menjawab sebagai "Shai" (persona panda merah).
-- Menggunakan bahasa Indonesia yang sederhana dan ramah anak.
-- Diprogram secara eksplisit untuk **tidak** menggunakan format Markdown (seperti `*bold*` atau _list_ angka) agar jawaban selalu bersih dan mudah dibaca.
+### 2. 🔍 Cek Pesan (Hoax Detector)
 
-### 2\. 🗺️ Petualangan Shai (Simulator Skenario)
+Alat deteksi dini untuk menganalisis pesan mencurigakan, SMS penipuan, atau berita bohong.
 
-Sebuah _mini-game_ interaktif yang menyajikan skenario keamanan digital di dunia nyata.
+- **Cara Kerja:** Pengguna menempelkan teks, dan AI menganalisisnya untuk menentukan level bahaya (**AMAN**, **RAGU**, atau **BERBAHAYA**) beserta penjelasannya.
+- **Teknologi:** Gemini JSON Mode untuk output terstruktur.
+- **Lokasi:** `/detector`
 
-- Berisi **15+ skenario** unik yang mencakup _phishing_, _hoax_, privasi data, dan etika AI.
-- Menampilkan **3 skenario acak** setiap kali halaman dikunjungi untuk _replay value_ yang tinggi.
-- Sistem _feedback_ visual interaktif menggunakan modal yang menampilkan gambar `shai-happy.png` untuk jawaban benar dan `shai-sad.png` untuk jawaban salah.
+### 3. 🗺️ Petualangan Shai (Interactive Scenarios)
 
-### 3\. 🔍 Cek Pesan (Analisis Hoax)
+Mini-game edukasi berbasis skenario dunia nyata (phishing, cyberbullying, privasi).
 
-Alat praktis di mana pengguna dapat menyalin-tempel (copy-paste) pesan _chat_ atau teks yang mencurigakan.
-
-- AI akan menganalisis teks tersebut untuk mencari tanda-tanda bahaya.
-- Memberikan respons JSON yang terstruktur: `severity` ("AMAN", "HATI-HATI", atau "BERBAHAYA") dan `explanation` (penjelasan singkat).
-- _Prompt_ dirancang khusus untuk selalu memberikan penjelasan dalam **Bahasa Indonesia**.
+- **Fitur:** Menyajikan 3 skenario acak setiap sesi dari database skenario (`lib/scenarios.ts`).
+- **Interaksi:** Memberikan umpan balik visual instan (Shai Senang/Sedih) berdasarkan pilihan pengguna.
+- **Lokasi:** `/adventure`
 
 ---
 
 ## 🛠️ Tumpukan Teknologi (Tech Stack)
 
-- **Framework:** Next.js 14 (App Router)
-- **Frontend:** React, Tailwind CSS
-- **UI:** shadcn/ui
-- **Backend:** Next.js API Routes (Vercel Serverless Functions)
-- **AI:** Google Gemini Pro
-- **Package Manager:** pnpm
-- **Deployment:** Vercel
+Proyek ini dibangun menggunakan teknologi web modern terbaru untuk performa maksimal:
+
+| Kategori            | Teknologi           | Keterangan                                              |
+| :------------------ | :------------------ | :------------------------------------------------------ |
+| **Framework**       | **Next.js 16**      | App Router & Turbopack enabled                          |
+| **Bahasa**          | **TypeScript**      | Type-safety untuk pengembangan yang robust              |
+| **Styling**         | **Tailwind CSS v4** | Menggunakan konfigurasi CSS-first modern (`@theme`)     |
+| **UI Library**      | **shadcn/ui**       | Komponen Radix UI yang kustomizable                     |
+| **AI Model**        | **Google Gemini**   | `gemini-2.5-flash-lite` via SDK `@google/generative-ai` |
+| **Font**            | **Nunito**          | Google Font yang ramah anak (Rounded)                   |
+| **Package Manager** | **pnpm**            | Instalasi dependensi yang cepat dan efisien             |
 
 ---
 
-## 🏁 Menjalankan Secara Lokal (Getting Started)
+## 🚀 Panduan Instalasi (Lokal)
 
-Berikut adalah cara untuk menjalankan proyek ini di laptop Anda.
+Ikuti langkah ini untuk menjalankan proyek di komputer Anda:
 
-### 1\. Prasyarat
+### 1. Prasyarat
 
-- Node.js (v18 atau lebih baru)
-- `pnpm` terinstal secara global (`npm install -g pnpm`)
+Pastikan Anda sudah menginstal **Node.js** (v18 atau lebih baru) dan **pnpm**.
 
-### 2\. Kloning Repositori
+### 2. Kloning & Instalasi
 
 ```bash
-git clone https://[URL-REPOSITORI-ANDA]
+# Kloning repositori (jika belum)
+git clone [https://github.com/username-anda/shai.git](https://github.com/username-anda/shai.git)
+
+# Masuk ke folder proyek
 cd Shai
-```
 
-### 3\. Instal Dependensi
-
-Proyek ini menggunakan `pnpm`.
-
-```bash
+# Instal paket dependensi
 pnpm install
 ```
 
-### 4\. Atur Variabel Lingkungan
+### 3\. Konfigurasi Environment Variable
 
-Anda harus memiliki Kunci API Google Gemini.
+Anda memerlukan API Key dari Google AI Studio.
 
-1.  Buat file baru di _root_ proyek (sejajar `package.json`) bernama `.env.local`.
+1.  Buat file `.env.local` di root folder (sejajar dengan `package.json`).
+2.  Tambahkan kode berikut:
 
-2.  Buka file tersebut dan tambahkan Kunci API Anda:
+<!-- end list -->
 
-    ```.env
-    GEMINI_API_KEY=KUNCI_API_GEMINI_ANDA_DI_SINI
-    ```
+```env
+GEMINI_API_KEY=masukkan_api_key_google_anda_disini
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
 
-    _(File ini sudah ada di `.gitignore` sehingga tidak akan terunggah ke GitHub)._
-
-### 5\. Jalankan Server Development
+### 4\. Jalankan Aplikasi
 
 ```bash
 pnpm dev
 ```
 
-Buka [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) di _browser_ Anda.
+Buka [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) di browser Anda.
 
 ---
 
 ## 📁 Struktur Proyek
 
+Berikut adalah struktur folder utama yang digunakan dalam proyek ini:
+
 ```
-/Shai/
-├── /app/                   # Halaman Frontend (App Router)
-│   ├── /adventure/         # Halaman Petualangan
-│   ├── /chat/              # Halaman Chatbot
-│   ├── /detector/          # Halaman Cek Pesan
-│   ├── /api/               # Endpoint API Backend (Serverless)
-│   │   ├── /chat/
-│   │   │   └── route.ts    # Backend Logika "Tanya Shai"
-│   │   └── /checkHoax/
-│   │       └── route.ts    # Backend Logika "Cek Pesan"
-│   ├── layout.tsx          # Layout utama
-│   └── page.tsx            # Halaman utama (Homepage)
-│
-├── /components/            # Komponen React UI
-│   ├── /ui/                # Komponen shadcn/ui
-│   ├── navbar.tsx          # Navbar kustom
-│   ├── hero-section.tsx    # Hero section kustom
-│   ├── scenario-card.tsx   # Kartu skenario
-│   ├── feedback-modal.tsx  # Modal feedback (Shai-happy/sad)
-│   └── footer.tsx          # Footer kustom
-│
-├── /lib/                   # Logika & utilitas
-│   ├── scenarios.ts        # "Database" untuk 15+ skenario petualangan
-│   └── utils.ts            # Utilitas Tailwind
-│
-└── /public/                # Aset statis (gambar, ikon, font)
-    ├── shai-mascot.png
-    ├── shai-logo.png
-    ├── shai-happy.png
-    └── shai-sad.png
+Shai/
+├── app/                    # App Router (Halaman & API)
+│   ├── api/                # Serverless Functions (Backend)
+│   │   ├── chat/           # Endpoint untuk Chatbot
+│   │   └── checkHoax/      # Endpoint untuk Analisis Teks JSON
+│   ├── adventure/          # Halaman Game (Client & Server separated)
+│   ├── chat/               # Halaman Chat UI
+│   ├── detector/           # Halaman Detektor
+│   ├── globals.css         # Konfigurasi Tailwind v4 & Tema Global
+│   ├── layout.tsx          # Root layout & Metadata
+│   └── page.tsx            # Halaman Utama (Landing Page)
+├── components/             # Komponen React UI
+│   ├── ui/                 # Komponen Reusable (Button, Card, Toast, dll)
+│   ├── feature-card.tsx    # Kartu fitur halaman depan
+│   ├── feedback-modal.tsx  # Modal interaktif (Happy/Sad Shai)
+│   ├── hero-section.tsx    # Banner utama
+│   ├── navbar.tsx          # Navigasi responsif
+│   └── footer.tsx          # Footer halaman
+├── lib/                    # Utilitas & Data
+│   ├── scenarios.ts        # Database statis skenario game
+│   └── utils.ts            # Helper function (clsx/tailwind-merge)
+├── public/                 # Aset Gambar Statis
+│   ├── shai-logo.png       # Logo Aplikasi
+│   ├── shai-wave.png       # Maskot Utama (Hero)
+│   ├── shai-smile.png      # Maskot Footer
+│   ├── shai-happy.png      # Feedback Benar
+│   └── shai-sad.png        # Feedback Salah
+└── next.config.mjs         # Konfigurasi Next.js
 ```
 
 ---
 
-## 🚀 Deployment
+## 🎨 Catatan Desain (Tailwind v4)
 
-Proyek ini dirancang untuk _deployment_ instan di **Vercel**.
+Proyek ini menggunakan **Tailwind CSS v4**. Konfigurasi tema (warna, font) tidak lagi berada di `tailwind.config.js`, melainkan langsung diatur di dalam file **`app/globals.css`** menggunakan direktif `@theme`.
 
-1.  Impor repositori GitHub Anda ke Vercel.
-2.  Vercel akan otomatis mendeteksi Next.js dan `pnpm`.
-3.  **Langkah Terpenting:** Pergi ke **Settings -\> Environment Variables** di proyek Vercel Anda dan tambahkan `GEMINI_API_KEY` Anda.
-4.  Klik **Deploy**.
+**Palet Warna Utama:**
+
+- **Rust Orange:** `#d87a4a` (Warna Maskot/Aksi Utama)
+- **Forest Green:** `#3d7a6b` (Warna Aksen/Aman)
+- **Soft Cream:** `#faf5f0` (Background Hangat)
+
+---
+
+## 📝 Lisensi
+
+Hak Cipta © 2025 Shai Project. Dibuat untuk kompetisi YCWC 2025.

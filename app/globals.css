@@ -1,10 +1,25 @@
+/* === KONFIGURASI TAILWIND CSS V4 ===
+  Catatan: Jika editor Anda (VS Code) menandai baris di bawah ini sebagai "Unknown at rule",
+  itu adalah hal yang WAJAR karena ini adalah sintaks terbaru Tailwind v4.
+  Kode akan tetap berjalan dengan sempurna saat dijalankan.
+*/
+
+/* 1. Mengimpor framework Tailwind CSS utama */
 @import "tailwindcss";
+
+/* 2. Mengimpor plugin animasi tambahan */
 @import "tw-animate-css";
 
+/* 3. Definisi Varian Kustom (@custom-variant)
+  Mendefinisikan cara kerja 'dark mode'.
+  Sintaks ini menggantikan konfigurasi 'darkMode: class' di versi lama.
+  Artinya: Style akan aktif jika elemen induk memiliki class '.dark'.
+*/
 @custom-variant dark (&:is(.dark *));
 
+/* --- Variabel CSS (Design Tokens) --- */
 :root {
-  /* Warm, cozy color palette for Shai */
+  /* Palet Warna Tema "Cozy Digital Storybook" untuk Shai */
   --rust-orange: #d87a4a;
   --rust-orange-light: #e69861;
   --rust-orange-dark: #c2653a;
@@ -16,6 +31,7 @@
   --warm-white: #fffbf7;
   --text-dark: #2c2220;
 
+  /* Mapping variabel tema Shadcn UI ke sistem warna OKLCH (untuk konsistensi warna modern) */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -49,17 +65,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-
-  --shai-cream: 247 243 232;
-  /* #f7f3e8 */
-  --shai-rust: 217 85 37;
-  /* #d95525 */
-  --shai-green: 58 90 64;
-  /* #3a5a40 */
-  --shai-brown: 42 42 42;
-  /* #2a2a2a */
 }
 
+/* Variabel khusus untuk Mode Gelap */
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -95,9 +103,15 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+/* 4. Konfigurasi Tema Inline (@theme)
+  Di Tailwind v4, konfigurasi font dan warna bisa langsung dilakukan di CSS 
+  tanpa perlu file `tailwind.config.js` yang rumit.
+*/
 @theme inline {
   --font-sans: "Nunito", "Nunito Fallback";
   --font-mono: "Geist Mono", "Geist Mono Fallback";
+
+  /* Mapping variabel CSS ke utility class Tailwind (misal: bg-background) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -134,7 +148,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Add custom Shai colors to Tailwind theme */
+
+  /* Menambahkan Warna Kustom Shai ke Tema Tailwind */
   --color-rust-orange: #d87a4a;
   --color-rust-orange-light: #e69861;
   --color-rust-orange-dark: #c2653a;
@@ -147,6 +162,10 @@
   --color-text-dark: #2c2220;
 }
 
+/* 5. Layer Base (@layer base)
+  Menerapkan style dasar ke elemen HTML standar.
+  '@apply' digunakan untuk menyalin style utility class ke element selector.
+*/
 @layer base {
   * {
     @apply border-border outline-ring/50;

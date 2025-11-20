@@ -1,19 +1,22 @@
-// 1. Definisikan Tipe Data dan EXPORT (Ini perbaikan error Anda)
+// --- Definisi Tipe Data (Interfaces) ---
+
+// Struktur data untuk satu pilihan jawaban
 export interface Choice {
   id: string;
-  teksPilihan: string;
-  teksFeedback: string;
-  isCorrect: boolean; // Penting untuk logika feedback
+  teksPilihan: string;  // Teks yang muncul di tombol
+  teksFeedback: string; // Penjelasan yang muncul setelah memilih
+  isCorrect: boolean;   // Menentukan apakah pilihan ini benar (aman) atau salah
 }
 
+// Struktur data untuk satu skenario permainan
 export interface Scenario {
   id: string;
-  narasi: string;
-  pilihan: Choice[];
-  // 'ilustrasi' telah dihapus
+  narasi: string;       // Cerita atau situasi masalah
+  pilihan: Choice[];    // Array berisi opsi jawaban (biasanya 3 pilihan)
 }
 
-// 2. Buat Daftar Master SEMUA 15 Skenario (Semua 3 Pilihan, Tanpa Gambar)
+// --- Database Skenario ---
+// Daftar lengkap semua kemungkinan skenario dalam game.
 export const allScenarios: Scenario[] = [
   // == Kategori: Phishing (Penipuan) ==
   {
@@ -40,6 +43,7 @@ export const allScenarios: Scenario[] = [
       },
     ],
   },
+  // ... (Skenario lainnya berlanjut di sini sesuai kode asli)
   {
     id: 'sc_phish_2',
     narasi: 'Ibumu menerima SMS bertuliskan: "Nasabah Yth, akun bank Anda terkunci. Mohon verifikasi data diri Anda di link ini segera." Link-nya terlihat aneh.',
@@ -331,16 +335,16 @@ export const allScenarios: Scenario[] = [
   },
 ];
 
+// --- Fungsi Helper ---
 
 /**
- * Mengambil beberapa skenario secara acak dari daftar master.
- * @param count Berapa banyak skenario acak yang diinginkan.
- * @returns Array berisi skenario acak.
+ * getRandomScenarios
+ * Mengambil sejumlah skenario secara acak dari database utama.
+ * Menggunakan logika pengacakan array (shuffle) sederhana.
+ * * @param count Jumlah skenario yang ingin diambil (default: 3)
+ * @returns Array berisi skenario yang sudah diacak
  */
 export function getRandomScenarios(count: number = 3): Scenario[] {
-  // 1. Salin dan acak daftar master
   const shuffled = [...allScenarios].sort(() => 0.5 - Math.random());
-
-  // 2. Ambil 'count' skenario pertama dari daftar acak
   return shuffled.slice(0, count);
 }

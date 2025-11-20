@@ -1,6 +1,8 @@
 import { FeatureCard } from "./feature-card"
 
 export function FeaturesSection() {
+  // Data statis untuk setiap fitur.
+  // Memudahkan penambahan atau perubahan fitur tanpa mengubah struktur layout.
   const features = [
     {
       title: "Tanya Shai",
@@ -8,7 +10,7 @@ export function FeaturesSection() {
         "Tanyakan apa saja kepada Shai tentang keamanan internet. Dapatkan jawaban ramah dan mudah dipahami!",
       icon: "chat" as const,
       href: "/chat",
-      rotationDirection: "left" as const,
+      rotationDirection: "left" as const, // Arah rotasi visual untuk variasi
     },
     {
       title: "Cek Pesan",
@@ -37,8 +39,10 @@ export function FeaturesSection() {
         </p>
       </div>
 
+      {/* Grid Responsif: 1 kolom di mobile, 3 kolom di desktop */}
       <div className="grid md:grid-cols-3 gap-8 md:gap-6">
         {features.map((feature, index) => (
+          // Merender kartu fitur dengan delay animasi bertahap
           <FeatureCard key={feature.title} {...feature} delay={index * 100} />
         ))}
       </div>

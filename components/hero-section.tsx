@@ -4,7 +4,8 @@ export function HeroSection() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
       <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-        {/* Left: Text Content */}
+        
+        {/* Kolom Kiri: Teks & Tombol CTA */}
         <div className="space-y-6">
           <h1 className="text-5xl md:text-6xl font-black text-text-dark leading-tight text-balance">
             Selamat Datang, <span className="text-rust-orange">Pahlawan Digital!</span>
@@ -16,12 +17,14 @@ export function HeroSection() {
           </p>
 
           <div className="flex gap-4 pt-4">
+            {/* Tombol Utama: Menuju Game */}
             <Link href="/adventure">
               <button className="px-8 py-4 bg-rust-orange hover:bg-rust-orange-dark text-white font-bold rounded-full transition-all transform hover:scale-105 shadow-lg">
                 Mulai Petualangan
               </button>
             </Link>
 
+            {/* Tombol Sekunder: Scroll ke Fitur */}
             <Link href="/#fitur">
               <button className="px-8 py-4 bg-white border-3 border-forest-green text-forest-green font-bold rounded-full hover:bg-forest-green/5 transition-all">
                 Pelajari Lebih
@@ -30,15 +33,15 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Right: Mascot Illustration */}
+        {/* Kolom Kanan: Ilustrasi Maskot */}
         <div className="flex justify-center">
           <div className="relative w-full max-w-md h-96">
-            {/* Background gradient */}
+            {/* Efek cahaya latar belakang (Glow) */}
             <div className="absolute inset-0 bg-gradient-to-br from-rust-orange/20 to-forest-green/20 rounded-full blur-3xl" />
 
-            {/* Shai mascot image */}
+            {/* Gambar Maskot Shai */}
             <img
-              src="/shai-wave.png"   // pastikan file ada di folder public/images
+              src="/shai-wave.png"
               alt="Shai Mascot"
               className="w-full h-full object-contain relative z-10 drop-shadow-lg"
             />
