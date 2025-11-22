@@ -34,7 +34,7 @@ export function HeroSection() {
         </div>
 
         {/* Kolom Kanan: Ilustrasi Maskot */}
-        <div className="flex justify-center">
+        <div className="hidden md:flex justify-center">
           <div className="relative w-full max-w-md h-96">
             {/* Efek cahaya latar belakang (Glow) */}
             <div className="absolute inset-0 bg-gradient-to-br from-rust-orange/20 to-forest-green/20 rounded-full blur-3xl" />
